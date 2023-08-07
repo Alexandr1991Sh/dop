@@ -1,17 +1,29 @@
-import React, {useState} from 'react';
 import './App.css';
-import {Site} from "./components/Site";
+import {NavLink, Outlet} from "react-router-dom";
+import styles from "./components/Site.module.css";
+import {S} from "./styles/_appStyles"
 
 
-export type FilterValuesType={
-
-}
+export type FilterValuesType = {}
 
 function App() {
     return (
-        <div>
-            <Site/>
-        </div>
+        <>
+            {/*<Site/>*/}
+            <div className={styles.header}><h1>HEADER</h1></div>
+            <div className={styles.body}>
+                <div className={styles.nav}>
+                 <S.NavWrapper><NavLink to={'/page/0'}>PAGE 1</NavLink></S.NavWrapper>
+                 <S.NavWrapper><NavLink to={'/page/1'}>PAGE 2</NavLink></S.NavWrapper>
+                 <S.NavWrapper> <NavLink to={'/page/2'}>PAGE 3</NavLink></S.NavWrapper>
+                 <S.NavWrapper> <NavLink to={'/protected'}>PAGE PROTECTED</NavLink></S.NavWrapper>
+                </div>
+
+                <div className={styles.content}>
+                    <Outlet/>
+                </div>
+            </div>
+        </>
     );
 }
 
